@@ -17,11 +17,13 @@ public class GestionnaireCombat {
 	
 	public void convoquerQuartier(Quartier q,String nom, String lieu,Date date) {
 		Combat c = new Combat(nom,lieu,date);
+		ListeCombat.getInstance().addCombat(c);
 		envoyerPlan(q.getListeHabitant(), c);
 	}
 	
 	public void convoquerHabitant(ArrayList<Habitant> listeHabitant,String nom, String lieu,Date date) {
 		Combat c = new Combat(nom,lieu,date);
+		ListeCombat.getInstance().addCombat(c);
 		envoyerPlan(listeHabitant, c);
 	}
 	

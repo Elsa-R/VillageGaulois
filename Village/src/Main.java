@@ -38,6 +38,7 @@ public class Main {
 		
 		// Creation GestionnaireCombat
 		GestionnaireCombat gc = GestionnaireCombat.getInstance();
+		ListeCombat lc = ListeCombat.getInstance();
 		ArrayList<Habitant> listeHabitant = new ArrayList<Habitant>();
 		listeHabitant.add(h2);
 		listeHabitant.add(h3);
@@ -46,13 +47,27 @@ public class Main {
 		Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse("0007-11-07");
 		Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse("0007-12-08");
 		
-		// Creation GestionnaireCombat
+		// Creation Combat
 		gc.convoquerQuartier(q1,"Combat de la pleine lune", "Foret-verte",date1);
 		gc.convoquerHabitant(listeHabitant,"Combat de la comete", "Butte-aux-cerfs",date2);
 		
 		for (Habitant h : gh.getListeHabitant()) {
-			System.out.println("L'habitant : "+h.getNom() + ""+ h.getConvoque();
+			System.out.println("L'habitant : "+h.getNom() + " est convoque aux combats suivants : "+ h.getConvoque());
 		}
+		// Paulette ne participe a aucune bataille car elle n'est pas combattante
+		
+		//Creation GestionnaireMusee
+		GestionnaireMusee gm = GestionnaireMusee.getInstance();
+		
+		//Creation Casque
+		Combat c1 = lc.getListeC().get(0);
+		Combat c2 = lc.getListeC().get(1);
+		gm.addCasque("chef", "a pointe", "bon",c1,h1);
+		gm.addCasque("sous-chef", "kiss-me-not", "mauvais", c1,h2);
+		gm.addCasque("soldat","bigouden", "bon", c2,h3);
+		System.out.println("Voici la liste des casques dans le musée : "+gm.getListeCasque());
+		gm.enleverCasque(gm.getListeCasque().get(2));
+		System.out.println("Voici la liste des casques dans le musée : "+gm.getListeCasque());
 	}
 
 }
